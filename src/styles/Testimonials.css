@@ -1,0 +1,108 @@
+/* Testimonials.css - EXACT same styles as your CSS */
+.testimonials-section {
+    padding: 80px 20px;
+    background-color: #ffffff;
+  }
+  
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .testimonial-card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #e6d5b8;
+  }
+  
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-color: #e7bc2f;
+  }
+  
+  .testimonial-content {
+    margin-bottom: 25px;
+  }
+  
+  .testimonial-text {
+    color: #666666;
+    font-size: 16px;
+    line-height: 1.6;
+    font-style: italic;
+    position: relative;
+    padding-left: 20px;
+  }
+  
+  .testimonial-text::before {
+    content: '"';
+    position: absolute;
+    left: 0;
+    top: -10px;
+    font-size: 60px;
+    color: #e7bc2f;
+    font-family: serif;
+    line-height: 1;
+    opacity: 0.3;
+  }
+  
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .testimonial-author img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .testimonial-author h4 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #362100;
+    margin-bottom: 5px;
+  }
+  
+  .testimonial-author p {
+    color: #888888;
+    font-size: 14px;
+  }
+  
+  /* Container styling */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Section Header Styling */
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  
+  .section-title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #362100;
+    margin-bottom: 15px;
+  }
+  
+  .section-description {
+    color: #666666;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+  }

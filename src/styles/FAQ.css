@@ -1,0 +1,65 @@
+/* FAQ.css - EXACT same styles as your CSS */
+.faq-section {
+    padding: 80px 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .accordion {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .accordion-item {
+    margin-bottom: 15px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e6d5b8;
+  }
+  
+  .accordion-toggle {
+    display: none;
+  }
+  
+  .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    background-color: #ffffff;
+    color: #362100;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .accordion-header:hover {
+    background-color: #fcf7f0;
+  }
+  
+  .accordion-icon {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .accordion-icon.open {
+    transform: rotate(45deg);
+  }
+  
+  .accordion-toggle:checked ~ .accordion-header {
+    background-color: #fcf7f0;
+    border-bottom: 1px solid #e6d5b8;
+  }
+  
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    background-color: #ffffff;
+  }
+  
+  .accordion-content p {
+    color: #666666;
+    line-height: 1.6;
+  }
