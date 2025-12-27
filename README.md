@@ -2,11 +2,11 @@
 
 A modern React + Vite web application for booking travel experiences across Ethiopia's most beautiful destinations.
 
-## 🎯 About This Project
+##  About This Project
 
 This is a React conversion of the original Discover Abysinia travel agency website. The project transforms traditional HTML/CSS into modular React components while maintaining the original design and improving maintainability, interactivity, and developer experience.
 
-## ✨ Key Features
+##  Key Features
 
 - **Component-Based Architecture** - Modular React components for testimonials, FAQ, and navigation
 - **Interactive UI Elements** - Collapsible FAQ accordion with smooth animations
@@ -14,7 +14,7 @@ This is a React conversion of the original Discover Abysinia travel agency websi
 - **Modern Development Workflow** - Fast refresh with Vite and optimized builds
 - **Code Maintainability** - Organized folder structure and reusable components
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 - Node.js (v18 or higher)
