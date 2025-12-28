@@ -1,0 +1,57 @@
+ .hero {
+    background: linear-gradient(rgba(54, 33, 0, 0.85), rgba(40, 24, 0, 0.9)), 
+                url('../assets/map.jpg');
+    background-size: cover;
+    background-position: center;
+    color:#ffffff;
+    text-align: center;
+    padding: 100px 20px;
+    margin-bottom: 60px;
+  }
+  
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+  
+  .hero-subtitle {
+    font-size: 18px;
+    margin-bottom: 40px;
+    opacity: 0.95;
+    line-height: 1.7;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #e7bc2f, #f5c542);
+    color: #362100;
+    padding: 16px 36px;
+    border-radius:12px;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    transition:  all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(231, 188, 47, 0.3);
+  }
+  
+  .cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(231, 188, 47, 0.4);
+    background: linear-gradient(135deg, #f5c542, #e7bc2f);
+  }
+  

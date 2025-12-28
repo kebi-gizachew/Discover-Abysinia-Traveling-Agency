@@ -1,0 +1,137 @@
+.booking-section {
+  padding: 80px 20px;
+  background-color:#f9f9f9;
+  margin-top: -60px;
+  position: relative;
+  z-index: 1;
+}
+
+.booking-card {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius:12px;
+  box-shadow:  0 12px 36px rgba(0, 0, 0, 0.15);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.booking-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #66371b;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.booking-subtitle {
+  color:#666666;
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 16px;
+}
+
+.booking-form {
+  margin-bottom: 20px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color:#66371b;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 14px 15px;
+  border: 2px solid #e6d5b8;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: 'Lato', sans-serif;
+  background-color:#ffffff;
+  color:#333333;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #e7bc2f;
+  box-shadow: 0 0 0 3px rgba(231, 188, 47, 0.1);
+}
+
+.form-group select {
+  appearance: none;
+  cursor: pointer;
+  padding-right: 40px;
+  position: relative;
+}
+
+.select-arrow {
+  position: absolute;
+  right: 15px;
+  transform: translateY(-150%);
+  color:#888888;
+  pointer-events: none;
+}
+
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg,#66371b,#8b4513);
+  color: #ffffff;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 6px 20px rgba(102, 55, 27, 0.2);
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #8b4513,#66371b);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(102, 55, 27, 0.3);
+}
+
+.booking-note {
+  color:#888888;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.booking-note i {
+  color: #e7bc2f;
+}

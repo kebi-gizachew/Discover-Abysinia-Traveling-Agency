@@ -1,0 +1,52 @@
+ .contact-info {
+    padding-right: 20px;
+  }
+  
+  .section-header {
+    margin-bottom: 40px;
+  }
+  
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #362100;
+    margin-bottom: 15px;
+  }
+  
+  .section-description {
+    color:#666666;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  
+  /* Contact Methods */
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+   .office-hours {
+    background-color:#fcf7f0;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #e6d5b8;
+  }
+  
+  .office-hours h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #362100;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .hours-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }

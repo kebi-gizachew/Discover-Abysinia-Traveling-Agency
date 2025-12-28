@@ -1,16 +1,19 @@
-// src/App.jsx
-import React from 'react';
-import Testimonials from './components/Testimonials';
-import FAQ from './components/FAQ';
-import './App.css';
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import Home from './pages/Home'
+import Contact from './pages/Contact'
+import './App.css' 
+import 'remixicon/fonts/remixicon.css'
+   
+function App(){
+  return(
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/contact" element={<Contact/>}/>
+     
+    </Routes>
+    </BrowserRouter>
 
-function App() {
-  return (
-    <div className="App">
-      <Testimonials />
-      <FAQ />
-    </div>
-  );
+  )
 }
-
-export default App;
+export default App

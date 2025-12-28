@@ -1,0 +1,32 @@
+.features-section {
+  padding: 80px 20px;
+  background-color: #ffffff;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #66371b;
+  margin-bottom: 15px;
+}
+
+.section-description {
+  color: #666666;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}

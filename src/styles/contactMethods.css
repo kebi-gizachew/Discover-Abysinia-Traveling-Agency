@@ -1,0 +1,47 @@
+.contact-method {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    border-left: 4px solid #e7bc2f;
+    transition:  all 0.3s ease;
+  }
+  
+  .contact-method:hover {
+    transform: translateX(5px);
+    box-shadow:0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  .method-icon {
+    background-color: #e7bc2f;
+    color:#362100;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  
+  .method-content h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #362100;
+    margin-bottom: 8px;
+  }
+  
+  .method-content p {
+    color:#666666;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  
+  .method-content p:not(:last-child) {
+    margin-bottom: 4px;
+  }
+  

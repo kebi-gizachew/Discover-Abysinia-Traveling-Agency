@@ -1,0 +1,136 @@
+/* Header.css - Updated to match image layout */
+
+/* Import Montserrat font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header-div {
+    display: flex;
+    justify-content: space-between; /* Changed to space-between */
+    align-items: center;
+    height: 12vh;
+    padding: 0 100px; /* Added padding for spacing */
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.header-div h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: #66371b;
+    letter-spacing: -0.5px;
+    width: auto; /* Changed from 50% to auto */
+    text-align: left; /* Changed to left */
+    margin: 0;
+}
+
+.nav-header {
+    width: auto; /* Changed from 50% to auto */
+    height: 80%;
+    display: flex;
+    justify-content: flex-end; /* Changed to flex-end */
+    align-items: center;
+    list-style: none;
+    gap: 40px; /* Added gap between items */
+}
+
+.nav-header li {
+    list-style: none;
+}
+
+.header-link {
+    text-decoration: none;
+    color: #333333;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 8px 0;
+    position: relative;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+/* Remove underline from NavLink by default */
+.header-link a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+/* Active link styling */
+.header-link a.active {
+    color: #66371b;
+    font-weight: 700;
+}
+
+/* Hover effect */
+.header-link:hover a {
+    color: #66371b;
+}
+
+/* Underline animation on hover */
+.header-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #66371b;
+    transition: width 0.3s ease;
+}
+
+.header-link:hover::after {
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-div {
+        padding: 0 20px;
+        height: 12vh;
+    }
+    
+    .header-div h1 {
+        font-size: 24px;
+    }
+    
+    .nav-header {
+        gap: 20px;
+    }
+    
+    .header-link {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-div {
+        flex-direction: column;
+        justify-content: center;
+        height: 20vh;
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    .header-div h1 {
+        text-align: center;
+        font-size: 22px;
+    }
+    
+    .nav-header {
+        gap: 15px;
+        justify-content: center;
+    }
+    
+    .header-link {
+        font-size: 14px;
+    }
+}
