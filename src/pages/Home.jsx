@@ -5,6 +5,7 @@ import DesBox from '../components/desBox'
 import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
 import Footer from '../components/Footer';
+import ExploreWhole from '../components/exploreWhole'
 function Home(){
     return(
         <>
@@ -12,6 +13,7 @@ function Home(){
         <Hero/>
         <Booking/>
         <DesBox/>
+        <ExploreWhole/>
         <Testimonials/>
         <FAQ/>
         <Footer/>

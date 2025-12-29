@@ -1,4 +1,6 @@
 import '../styles/Hero.css';
+import {NavLink} from 'react-router-dom'
+
 
 function Hero() {
     return (
@@ -17,10 +19,10 @@ function Hero() {
                     
                     <div className="hero-buttons">
                         <button className="hero-btn primary-btn">
-                            Explore Destinations
+                            <NavLink to='/destination'style={{color:'white',textDecoration:'none'}}>Explore Destinations</NavLink>
                         </button>
                         <button className="hero-btn secondary-btn">
-                            Contact Us
+                            <NavLink to='/contact' style={{color:'white',textDecoration:'none'}}>Contact Us</NavLink>
                         </button>
                     </div>
                 </div>

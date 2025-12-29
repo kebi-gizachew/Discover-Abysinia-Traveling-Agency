@@ -1,0 +1,19 @@
+.section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #66371b;
+  margin-bottom: 15px;
+}
+
+.section-description {
+  color: #666666;
+  font-size: 18px;
+  line-height: 1.6;
+}
