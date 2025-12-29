@@ -14,6 +14,7 @@ function ContactHero(){
         </div>
       </div>
     </section>
+    
     )
 }
 export default ContactHero;
