@@ -1,0 +1,21 @@
+.container{
+  width:100%;
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 20px;
+}
+.main-content {
+  background:rgb(248, 248, 248);
+  flex: 1;
+  padding: 40px 0 80px;
+}
+.destinations-grid {
+  padding: 0 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+}
