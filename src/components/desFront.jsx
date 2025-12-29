@@ -13,6 +13,20 @@ function DesFront(props){
   }
 
   }
+  const handleInput = (val) => {
+  const query = val.toLowerCase().trim()
+
+  if (query === "") {
+    props.setPlaces(props.tempo)
+    return
+  }
+
+  const filtered = props.tempo.filter(place =>
+    place.title.toLowerCase().startsWith(query)
+  )
+
+  props.setPlaces(filtered)
+}
     return(
         <>
          <section className="hero-sec">
@@ -32,6 +46,7 @@ function DesFront(props){
                 className="search-input"
                 placeholder="Search destinations, locations..."
                 aria-label="Search destinations"
+                onChange={(e)=>handleInput(e.target.value)}
               />
             </div>
             
