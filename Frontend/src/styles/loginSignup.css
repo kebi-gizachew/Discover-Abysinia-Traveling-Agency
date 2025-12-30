@@ -188,3 +188,93 @@
 .footer-activate {
   margin-top: auto;
 }
+
+/* Tablets / small screens */
+@media (max-width: 992px) {
+  .auth-container.discover-container {
+    grid-template-columns: 1fr; /* stack hero + card */
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  .discover-hero {
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .discover-title {
+    font-size: 2.5rem;
+  }
+
+  .discover-subtitle {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .features-list {
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .auth-card {
+    flex: 1 1 auto;
+    max-width: 100%;
+    padding: 2rem;
+  }
+
+  .input-group input,
+  .auth-btn {
+    width: 100%;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .auth-container.discover-container {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .discover-title {
+    font-size: 2rem;
+  }
+
+  .discover-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .features-list {
+    gap: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .auth-card {
+    padding: 1.5rem;
+  }
+
+  .auth-card h2 {
+    font-size: 1.75rem;
+  }
+
+  .input-group label {
+    font-size: 0.9rem;
+  }
+
+  .input-group input {
+    font-size: 0.9rem;
+    padding: 0.7rem;
+  }
+
+  .auth-btn {
+    font-size: 0.95rem;
+    padding: 0.85rem;
+  }
+
+  .returnToHome a {
+    font-size: 0.9rem;
+  }
+
+  .auth-switch {
+    font-size: 0.9rem;
+  }
+}
