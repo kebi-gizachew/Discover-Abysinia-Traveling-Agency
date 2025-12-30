@@ -73,12 +73,11 @@
 }
 
 .auth-card {
-  flex: 0 0 500px;
   background: white;
   padding: 3rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  flex: 0 0 500px;
   color: #333;
 }
 .returnToHome {
@@ -102,19 +101,20 @@
 }
 
 .returnToHome a::before {
-  content: "←";
   margin-right: 0.5rem;
   font-size: 1rem;
 }
-.auth-card-wrapper h2 {
+.auth-card h2 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
   color: #1a3a2c;
+  text-align: center;
 }
 
 .auth-subtitle {
   color: #666;
   margin-bottom: 2.5rem;
+  text-align: center;
 }
 
 .input-group {

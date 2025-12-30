@@ -1,5 +1,6 @@
 import { useState } from "react";
 import '../styles/loginSignup.css'
+import 'remixicon/fonts/remixicon.css';
 
 const Signup = () => {
   const [email, setEmail] = useState("beinmetabd20@gmail.com");
@@ -43,7 +44,8 @@ const Signup = () => {
      
         
         <div className="auth-card">
-          <p className="returnToHome"><a href="/Home">Back to Home</a></p>
+          <p className="returnToHome"><a href="/Home"><i className="ri-arrow-left-line"></i>
+Back to Home</a></p>
           <h2>Create Account</h2>
           <p className="auth-subtitle">Join us to start your Ethiopian adventure</p>
           
@@ -52,7 +54,7 @@ const Signup = () => {
               <label>Email</label>
               <input
                 type="email"
-                placeholder="beinmetabd20@gmail.com"
+                placeholder="your@gmail.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required

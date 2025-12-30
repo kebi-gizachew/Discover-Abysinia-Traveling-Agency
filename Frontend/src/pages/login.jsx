@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import '../styles/loginSignup.css'
+import 'remixicon/fonts/remixicon.css';
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -37,7 +39,8 @@ const Login = () => {
       </div>
 
         <div className="auth-card">
-          <p className="returnToHome"><a href="/Home">Back to Home</a></p>
+          <p className="returnToHome"><a href="/Home"><i className="ri-arrow-left-line"></i>
+Back to Home</a></p>
           <h2>Welcome Back</h2>
           <p className="auth-subtitle">Sign in to access your travel bookings</p>
           
@@ -46,7 +49,7 @@ const Login = () => {
               <label>Email</label>
               <input
                 type="email"
-                placeholder="beinmetabd20@gmail.com"
+                placeholder="your@gmail.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required

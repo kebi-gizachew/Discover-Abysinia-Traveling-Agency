@@ -39,7 +39,7 @@ function Header() {
             Contact
           </NavLink>
         </li>
-        <li className="header-link">
+        <li className="header-link header-link-login">
           <NavLink 
             to="/login"
             style={({ isActive }) => ({ 
@@ -50,7 +50,7 @@ function Header() {
             Login
           </NavLink>
         </li>
-        <li className="header-link">
+       {/*  <li className="header-link">
           <NavLink 
             to="/signup"
             style={({ isActive }) => ({ 
@@ -60,7 +60,7 @@ function Header() {
           >
             Sign Up
           </NavLink>
-        </li>
+        </li> */}
       </ul>
     </div>
   );
