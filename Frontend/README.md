@@ -1,16 +1,32 @@
-# React + Vite
+# Discover Abysinia Traveling Agency
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React + Vite web application for booking travel experiences across Ethiopia's most beautiful destinations.
 
-Currently, two official plugins are available:
+##  About This Project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is a React conversion of the original Discover Abysinia travel agency website. The project transforms traditional HTML/CSS into modular React components while maintaining the original design and improving maintainability, interactivity, and developer experience.
 
-## React Compiler
+##  Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Component-Based Architecture - Modular React components for testimonials, FAQ, and navigation
+- Interactive UI Elements - Collapsible FAQ accordion with smooth animations
+- Responsive Design - Fully responsive layout that works on all devices
+- Modern Development Workflow - Fast refresh with Vite and optimized builds
+- Code Maintainability - Organized folder structure and reusable components
 
-## Expanding the ESLint configuration
+##  Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or yarn package manager
+
+### Installation
+```bash
+# Clone the repository
+git clone https://github.com/kebi-gizachew/Discover-Abysinia-Traveling-Agency.git
+
+# Navigate to project directory
+cd Discover-Abysinia-Traveling-Agency
+
+# Install dependencies
+npm install

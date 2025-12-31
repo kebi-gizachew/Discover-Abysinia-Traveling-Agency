@@ -1,0 +1,280 @@
+.auth-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.discover-container {
+  background: linear-gradient(135deg, #66371b, #8b4513);
+  color: white;
+}
+.auth-container.discover-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+.discover-hero {
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+
+.discover-title {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+.discover-subtitle {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 500px;
+}
+
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.1rem;
+}
+
+.feature-checkbox {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-checkbox.checked {
+  background-color: #fff;
+  position: relative;
+}
+
+.feature-checkbox.checked::after {
+  content: "✓";
+  color: #1a3a2c;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.auth-card {
+  background: white;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 500px;
+  color: #333;
+}
+.returnToHome {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.returnToHome a {
+  color: #2d5e4a;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.3s;
+}
+
+.returnToHome a:hover {
+  color: #1a3a2c;
+  text-decoration: underline;
+}
+
+.returnToHome a::before {
+  margin-right: 0.5rem;
+  font-size: 1rem;
+}
+.auth-card h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #1a3a2c;
+  text-align: center;
+}
+
+.auth-subtitle {
+  color: #666;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.input-group input {
+  width: 90%;
+  padding: 0.875rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #2d5e4a;
+}
+
+.auth-btn {
+  width: 90%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #66371b, #8b4513);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 1rem;
+}
+
+.auth-btn:hover {
+  background: linear-gradient(135deg, #8b4513, #66371b);
+}
+
+.auth-switch {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #66371b;
+}
+
+.auth-switch a {
+  color: #66371b;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
+
+.windows-activate {
+  text-align: center;
+  color: #888;
+  font-size: 0.875rem;
+  margin-top: 2rem;
+  padding: 0.75rem;
+  border-top: 1px solid #eee;
+}
+
+.footer-activate {
+  margin-top: auto;
+}
+
+/* Tablets / small screens */
+@media (max-width: 992px) {
+  .auth-container.discover-container {
+    grid-template-columns: 1fr; /* stack hero + card */
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  .discover-hero {
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .discover-title {
+    font-size: 2.5rem;
+  }
+
+  .discover-subtitle {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .features-list {
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .auth-card {
+    flex: 1 1 auto;
+    max-width: 100%;
+    padding: 2rem;
+  }
+
+  .input-group input,
+  .auth-btn {
+    width: 100%;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .auth-container.discover-container {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .discover-title {
+    font-size: 2rem;
+  }
+
+  .discover-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .features-list {
+    gap: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .auth-card {
+    padding: 1.5rem;
+  }
+
+  .auth-card h2 {
+    font-size: 1.75rem;
+  }
+
+  .input-group label {
+    font-size: 0.9rem;
+  }
+
+  .input-group input {
+    font-size: 0.9rem;
+    padding: 0.7rem;
+  }
+
+  .auth-btn {
+    font-size: 0.95rem;
+    padding: 0.85rem;
+  }
+
+  .returnToHome a {
+    font-size: 0.9rem;
+  }
+
+  .auth-switch {
+    font-size: 0.9rem;
+  }
+}
