@@ -8,7 +8,8 @@ const userSchema = mongoose.Schema({
         lowercase:true,
         trim:true
     },
-    password:{String,
+    password:{
+        type:String,
     required:true,
     minlength:8
     },
@@ -17,4 +18,4 @@ const userSchema = mongoose.Schema({
         default:Date.now()
     }
 })
-module.exports=moongose.model('User',userSchema)
+module.exports=mongoose.model('User',userSchema)

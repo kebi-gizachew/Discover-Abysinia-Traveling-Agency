@@ -1,20 +1,47 @@
 import { useState } from "react";
-import '../styles/loginSignup.css'
+import '../styles/loginSignup.css';
 import 'remixicon/fonts/remixicon.css';
+import { authService } from '../../services/authService';
 
 const Signup = () => {
   const [email, setEmail] = useState("beinmetabd20@gmail.com");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState(""); 
+  const [loading, setLoading] = useState(false); 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: Add signup logic
+    setError(""); 
+    
     if (password !== confirmPassword) {
-      alert("Passwords don't match!");
+      setError("Passwords don't match!");
       return;
     }
-    console.log({ email, password });
+    
+    if (password.length < 8) {
+      setError("Password must be at least 8 characters");
+      return;
+    }
+    
+    setLoading(true);
+
+    try {
+      const result = await authService.signup(email, password);
+      
+      if (result.success) {
+        console.log("Signup successful:", result);
+        alert("Account created successfully! You are now logged in.");
+        window.location.href = "/";
+      } else {
+        setError(result.message || "Signup failed");
+      }
+    } catch (err) {
+      setError(err.message || "Signup failed. Please try again.");
+      console.error("Signup error:", err);
+    } finally {
+      setLoading(false); 
+    }
   };
 
   return (
@@ -41,55 +68,87 @@ const Signup = () => {
         </div>
       </div>
 
-     
+      <div className="auth-card">
+        <p className="returnToHome">
+          <a href="/">
+            <i className="ri-arrow-left-line"></i>Back to Home
+          </a>
+        </p>
+        <h2>Create Account</h2>
+        <p className="auth-subtitle">Join us to start your Ethiopian adventure</p>
+      
+        {error && (
+          <div style={{
+            backgroundColor: '#fee',
+            border: '1px solid #fcc',
+            color: '#c33',
+            padding: '10px',
+            borderRadius: '5px',
+            marginBottom: '15px',
+            fontSize: '14px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px'
+          }}>
+            <i className="ri-error-warning-line"></i> {error}
+          </div>
+        )}
         
-        <div className="auth-card">
-          <p className="returnToHome"><a href="/Home"><i className="ri-arrow-left-line"></i>
-Back to Home</a></p>
-          <h2>Create Account</h2>
-          <p className="auth-subtitle">Join us to start your Ethiopian adventure</p>
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label>Email</label>
+            <input
+              type="email"
+              placeholder="your@gmail.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              disabled={loading}
+            />
+          </div>
+          <div className="input-group">
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="Enter your password (min. 8 characters)"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              disabled={loading}
+            />
+          </div>
+          <div className="input-group">
+            <label>Confirm Password</label>
+            <input
+              type="password"
+              placeholder="Confirm your password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+              disabled={loading}
+            />
+          </div>
           
-          <form onSubmit={handleSubmit}>
-            <div className="input-group">
-              <label>Email</label>
-              <input
-                type="email"
-                placeholder="your@gmail.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div className="input-group">
-              <label>Password</label>
-              <input
-                type="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <div className="input-group">
-              <label>Confirm Password</label>
-              <input
-                type="password"
-                placeholder="Confirm your password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-              />
-            </div>
-          
-            <button type="submit" className="auth-btn">Create Account</button>
-          </form>
-          
-          <p className="auth-switch">
-            Already have an account? <a href="/login">Sign in</a>
-          </p>
+          <button 
+            type="submit" 
+            className="auth-btn"
+            disabled={loading}
+            style={loading ? {opacity: 0.7, cursor: 'not-allowed'} : {}}
+          >
+            {loading ? 'Creating Account...' : 'Create Account'}
+          </button>
+        </form>
+        
+        <p className="auth-switch">
+          Already have an account? <a href="/login">Sign in</a>
+        </p>
+        
+        <div style={{marginTop: '20px', fontSize: '12px', color: '#666'}}>
+          <p>Note: Use at least 8 characters for password</p>
+          <p>Test with: testuser@example.com / 12345678</p>
         </div>
       </div>
-
+    </div>
   );
 };
 

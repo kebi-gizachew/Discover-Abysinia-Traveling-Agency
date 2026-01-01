@@ -7,7 +7,7 @@ const signup = async(req,res)=>{
     try{
         const {email , password} = req.body
         if(!email || !password) return res.status(400).json({
-            success:true,
+            success:false,
             message:'Email and password are requried'
         })
         if(password.length < 8 ) return res.status(400).json({
@@ -30,10 +30,15 @@ const signup = async(req,res)=>{
             process.env.JWT_SECRET_KEY,
             {expiresIn:'7d'}
         )
+        res.cookie('token',token,{
+            httpOnly:true,
+            secure:false,
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+            sameSite:'strict'
+        })
         res.status(201).json({
             success:true,
             message:'User created successfully',
-            token,
             user:{
                 id:user._id,
                 email:user.email
@@ -69,10 +74,15 @@ const login = async(req,res)=>{
             process.env.JWT_SECRET_KEY,
             {expiresIn:'7d'}
         )
+        res.cookie('token',token,{
+            httpOnly:true,
+            secure:false,
+            maxAge:7*24*60*60*1000,
+            sameSite:'strict' 
+        })
         res.status(200).json({
             success:true,
             message:'User successfully logged in',
-            token,
             user:{
                 id:user._id,
                 email:user.email
@@ -85,5 +95,42 @@ const login = async(req,res)=>{
         })
 }
 }
-
-module.exports= {signup , login}
+const logout = async(req,res)=>{
+    res.clearCookie('token',{
+        httpOnly:true,
+        secure:false,
+        sameSite:'strict'
+    })
+    res.json({
+        success:true,
+        message:'Logged out successfully'
+    })
+}
+const checkAuth = async(req,res)=>{
+    try{
+    const token = req.cookies.token
+    if(!token){
+        return res.json({
+            success:false,
+            message:'Not authenticated'
+        })
+    }
+    const decoded =jwt.verify(token,process.env.JWT_SECRET_KEY)
+    if(!decoded) {
+        return res.json({
+            success:false,
+            message:'Not authenticated'
+        })
+    }
+    res.status(200).json({
+        success:true,
+        message:'Authenticated'
+    })
+}catch(err){
+    res.status(500).json({
+        success:false,
+        message:'Internal Server Error'
+    })
+}
+}
+module.exports= {signup , login , logout , checkAuth}
