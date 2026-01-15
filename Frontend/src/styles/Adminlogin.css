@@ -1,0 +1,147 @@
+/* ====== Page Container ====== */
+.auth-container {
+  min-height: 100vh;
+  width:100vw;
+  display: flex;
+  justify-content: center;   /* horizontal center */
+  align-items: center;       /* vertical center */
+  background: linear-gradient(135deg, #895804, #2b1600);
+  padding: 20px;
+
+}
+
+/* ====== Card ====== */
+.auth-card {
+  background: #fffdfa;
+  width: 100%;
+  padding: 32px;
+  border-radius: 14px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  animation: fadeInUp 0.5s ease;
+  margin:auto;
+}
+
+/* ====== Back Link ====== */
+.returnToHome {
+  margin-bottom: 10px;
+}
+
+.returnToHome a {
+  text-decoration: none;
+  color: #a77509;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.returnToHome a:hover {
+  text-decoration: underline;
+}
+
+/* ====== Headings ====== */
+.auth-card h2 {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 6px;
+  color: #222;
+}
+
+.auth-subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+/* ====== Input Group ====== */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #333;
+  font-weight: 500;
+}
+
+.input-group input {
+  padding: 12px 14px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #894e05;
+  box-shadow: 0 0 0 2px rgba(179, 127, 15, 0.2);
+}
+
+.input-group input:disabled {
+  background: #f5f5f5;
+  cursor: not-allowed;
+}
+
+/* ====== Button ====== */
+.auth-btn {
+  width: 100%;
+  padding: 12px;
+  background: #5c3202;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.auth-btn:hover {
+  background: #0b7f94;
+  transform: translateY(-1px);
+}
+
+.auth-btn:disabled {
+  background: #8fcbd7;
+  cursor: not-allowed;
+}
+
+/* ====== Error Box ====== */
+.auth-card .error {
+  background-color: #fee;
+  border: 1px solid #fcc;
+  color: #c33;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+/* ====== Animations ====== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ====== Mobile Responsive ====== */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 24px;
+  }
+
+  .auth-card h2 {
+    font-size: 22px;
+  }
+}

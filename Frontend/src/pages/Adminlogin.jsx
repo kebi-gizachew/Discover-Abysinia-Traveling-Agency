@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/loginSignup.css';
 import 'remixicon/fonts/remixicon.css';
 import { authService } from '../../services/authService'; 
-
+import "../styles/Adminlogin.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +17,7 @@ const Login = () => {
     setLoading(true); 
 
     try {
-      const result = await fetch("http://localhost:5000/api/users/login", {
+      const result = await fetch("http://localhost:5000/api/admins/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -29,7 +29,7 @@ const Login = () => {
       if (result.status === 200) {
         console.log("Login successful");
         alert("Login successful!");
-        navigate("/");
+        navigate("/admin");
       } else {
         setError(result.message || "Login failed");
       }
@@ -42,29 +42,7 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-container discover-container">
-      <div className="discover-hero">
-        <h1 className="discover-title">Discover Abisiniya</h1>
-        <p className="discover-subtitle">
-          Embark on an unforgettable journey through ancient history, stunning landscapes, and vibrant cultures.
-        </p>
-        
-        <div className="features-list">
-          <div className="feature-item">
-            <div className="feature-checkbox checked"></div>
-            <span>Ancient Historical Sites</span>
-          </div>
-          <div className="feature-item">
-            <div className="feature-checkbox checked"></div>
-            <span>Breathtaking Landscapes</span>
-          </div>
-          <div className="feature-item ">
-            <div className="feature-checkbox checked"></div>
-            <span>Rich Cultural Experiences</span>
-          </div>
-        </div>
-      </div>
-
+    <div className="auth-container ">
       <div className="auth-card">
         <p className="returnToHome">
           <a href="/">
@@ -72,7 +50,7 @@ const Login = () => {
           </a>
         </p>
         <h2>Welcome Back</h2>
-        <p className="auth-subtitle">Sign in to access your travel bookings</p>
+        <p className="auth-subtitle">Sign in to access Admin</p>
         
         {error && (
           <div style={{
@@ -121,11 +99,6 @@ const Login = () => {
             {loading ? 'Signing In...' : 'Sign In'}
           </button>
         </form>
-        
-        <p className="auth-switch">
-          Don't have an account? <a href="/signup">Sign Up</a>
-        </p>
-        
       </div>
     </div>
   );

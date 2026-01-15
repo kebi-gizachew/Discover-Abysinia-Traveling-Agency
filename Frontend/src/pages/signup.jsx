@@ -4,12 +4,15 @@ import 'remixicon/fonts/remixicon.css';
 import { authService } from '../../services/authService';
 
 const Signup = () => {
-  const [email, setEmail] = useState("beinmetabd20@gmail.com");
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [country, setCountry] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(""); 
   const [loading, setLoading] = useState(false); 
-
+  const url="http://localhost:5000/api/users/register";
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(""); 
@@ -27,10 +30,17 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      const result = await authService.signup(email, password);
+      const result = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: 'include',
+        body: JSON.stringify({ name, email, password, phone, country })
+      });
       
-      if (result.success) {
-        console.log("Signup successful:", result);
+      if (result.status === 201) {
+        console.log("Signup successful");
         alert("Account created successfully! You are now logged in.");
         window.location.href = "/";
       } else {
@@ -96,6 +106,17 @@ const Signup = () => {
         
         <form onSubmit={handleSubmit}>
           <div className="input-group">
+            <label>Name</label>
+            <input
+              type="text"
+              placeholder="Enter your name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              disabled={loading}
+            />
+          </div>
+          <div className="input-group">
             <label>Email</label>
             <input
               type="email"
@@ -128,7 +149,28 @@ const Signup = () => {
               disabled={loading}
             />
           </div>
-          
+          <div className="input-group">
+           <label>Phone</label>
+            <input
+              type="text"
+              placeholder="Enter your phone number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              required
+              disabled={loading}
+            />
+          </div>
+          <div className="input-group">
+           <label>Country</label>
+            <input
+              type="text"
+              placeholder="Enter your country"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+              required
+              disabled={loading}
+            />
+          </div>
           <button 
             type="submit" 
             className="auth-btn"

@@ -1,4 +1,5 @@
 import '../styles/Footer.css'
+import {NavLink} from 'react-router-dom'
 function Footer(){
     return(
     <footer>
@@ -19,9 +20,10 @@ function Footer(){
           <div className="footer-section">
             <h3 className="footer-title">Quick Links</h3>
             <ul className="footer-links">
-              <li><a href="../html/index.html">Home</a></li>
-              <li><a href="../html/destination.html">Destinations</a></li>
-              <li><a href="#" className="active">Contact Us</a></li>
+              <li><NavLink to="/">Home</NavLink></li>
+              <li><NavLink to="/destination">Destinations</NavLink></li>
+              <li><NavLink to="/contact">Contact Us</NavLink></li>
+              <li><NavLink to="/adminAuth">Admin</NavLink></li>
               
             </ul>
           </div>
