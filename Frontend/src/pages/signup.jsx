@@ -142,11 +142,6 @@ const Signup = () => {
         <p className="auth-switch">
           Already have an account? <a href="/login">Sign in</a>
         </p>
-        
-        <div style={{marginTop: '20px', fontSize: '12px', color: '#666'}}>
-          <p>Note: Use at least 8 characters for password</p>
-          <p>Test with: testuser@example.com / 12345678</p>
-        </div>
       </div>
     </div>
   );
