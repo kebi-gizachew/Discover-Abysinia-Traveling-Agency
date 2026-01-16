@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 export const createBooking = async (req, res) => {
     try {
         const userId = req.user._id;
-        const {destinationId, travelDate, travelers } = req.body;
+        const { fullName, email, transport, destinationId, travelDate, travelers } = req.body;
         const user = await User.findById(userId);
         const destination = await Destination.findById(destinationId);
         if (!user || !destination) {
@@ -13,6 +13,9 @@ export const createBooking = async (req, res) => {
         }
         const newBooking = await Booking.create({
             user: userId,
+            fullName,
+            email,
+            transport,
             destination: destinationId,
             travelDate,
             travelers

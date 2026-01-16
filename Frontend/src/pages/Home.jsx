@@ -12,7 +12,6 @@ function Home(){
         <>
         <Header/>
         <Hero/>
-        <Booking/>
         <DesBox/>
         <ExploreWhole/>
         <Testimonials/>

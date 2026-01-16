@@ -8,6 +8,8 @@ import {useContext,useEffect, useState} from 'react';
 import PropContext from './Hooks/PropContext';
 import Admin from './pages/Admin';
 import Adminlogin from './pages/Adminlogin';
+import BookingId from './pages/BookId';
+import DestinationId from './pages/DestinationId';
 function App() {
   const [data,setData]=useState(null);
     useEffect(() => {
@@ -34,11 +36,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/destination" element={<Destination />} />
+        <Route path="/destination/:id" element={<DestinationId />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/adminAuth" element={<Adminlogin />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/booking" element={<BookingId />} />
       </Routes>
     </BrowserRouter>
     </PropContext.Provider>

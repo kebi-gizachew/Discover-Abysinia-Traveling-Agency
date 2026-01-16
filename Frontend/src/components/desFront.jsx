@@ -9,6 +9,7 @@ function DesFront(props){
       return a.data===val
     
     })
+    console.log("Filtered places:", fil);
     props.setPlaces(fil)
   }
 

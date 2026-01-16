@@ -68,17 +68,18 @@
   .input-wrapper i,
   .textarea-wrapper i {
     position: absolute;
-    left: 15px;
+    left: 2px;
     color: #888888;
     font-size: 18px;
     pointer-events: none;
+    margin-right:30px;
   }
   
   .input-wrapper input,
   .input-wrapper select,
   .textarea-wrapper textarea {
     width: 100%;
-    padding: 14px 15px 14px 45px;
+    padding: 14px 15px 14px 90px;
     border: 2px solid #e6d5b8;
     border-radius: 8px;
     font-size: 15px;
