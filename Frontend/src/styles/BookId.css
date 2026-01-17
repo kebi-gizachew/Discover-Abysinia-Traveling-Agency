@@ -1,0 +1,142 @@
+/* ===== Page Wrapper ===== */
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing:border-box;
+
+}
+.bookings-page {
+    width:100vw;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #fff, #fff);
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ===== Title ===== */
+.bookings-title {
+  text-align: center;
+  font-size: 32px;
+  color: #5b3a1e;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.delete{
+    color:#555555;
+    margin:10px;
+    margin-top:20px;
+}
+.delete:hover{
+    color:rgb(188, 109, 6);
+    cursor: pointer;
+
+}
+/* ===== Loading / Empty ===== */
+.booking-loading,
+.booking-empty {
+  text-align: center;
+  font-size: 18px;
+  color: #6b4a2d;
+  margin-top: 60px;
+}
+
+/* ===== Grid ===== */
+.bookings-grid {
+    height: 570px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ===== Card ===== */
+.booking-card {
+  background-color: #fff;
+  border:2px solid #e6d5b8;
+  margin:auto;
+  border-radius: 14px;
+  overflow: hidden;
+  height: 500px;
+  box-shadow: 0 12px 25px rgba(163, 110, 64, 0.15);
+  transition: transform 0.3s ease box-shadow 0.3s ease;
+}
+
+.booking-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 35px rgba(91, 58, 30, 0.25);
+}
+
+/* ===== Image ===== */
+.booking-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.booking-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== Content ===== */
+.booking-content {
+  padding: 18px 20px 22px;
+}
+
+.booking-content h3 {
+  font-size: 20px;
+  color: #4a2e16;
+  margin-bottom: 4px;
+}
+
+.booking-content .location {
+  font-size: 14px;
+  color: #433f3c;
+  margin-bottom: 14px;
+}
+
+/* ===== Info ===== */
+.booking-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: #5f452f;
+  margin-bottom: 18px;
+}
+
+.booking-info strong {
+  color: #3f2714;
+}
+
+/* ===== Button ===== */
+.details-btn {
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(135deg, #6b3f1d, #8a5a2d);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.details-btn:hover {
+  background: linear-gradient(135deg, #8a5a2d, #a66b3c);
+  transform: translateY(-1px);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .bookings-title {
+    font-size: 26px;
+  }
+
+  .booking-content h3 {
+    font-size: 18px;
+  }
+}

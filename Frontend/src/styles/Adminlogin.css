@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;   /* horizontal center */
   align-items: center;       /* vertical center */
-  background: linear-gradient(135deg, #895804, #2b1600);
+  background: white;
   padding: 20px;
 
 }
@@ -16,6 +16,7 @@
   width: 100%;
   padding: 32px;
   border-radius: 14px;
+  border:1px solid rgb(185, 96, 1);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   animation: fadeInUp 0.5s ease;
   margin:auto;
@@ -103,12 +104,12 @@
 }
 
 .auth-btn:hover {
-  background: #0b7f94;
+  background: #6c3d04;
   transform: translateY(-1px);
 }
 
 .auth-btn:disabled {
-  background: #8fcbd7;
+  background: #704603;
   cursor: not-allowed;
 }
 

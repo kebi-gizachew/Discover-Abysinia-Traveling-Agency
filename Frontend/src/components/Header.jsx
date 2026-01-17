@@ -29,6 +29,9 @@ function Header() {
         <li className="header-link">
           <NavLink to="/contact" onClick={() => setIsOpen(false)}>Contact</NavLink>
         </li>
+         <li className="header-link">
+          <NavLink to="/booking" onClick={() => setIsOpen(false)}>Booking</NavLink>
+        </li>
         <li className="header-link header-link-login">
           <NavLink to="/login" onClick={() => setIsOpen(false)}>Login</NavLink>
         </li>

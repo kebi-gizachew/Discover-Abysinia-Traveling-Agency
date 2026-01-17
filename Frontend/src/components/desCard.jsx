@@ -1,6 +1,7 @@
 import '../styles/desCard.css'
-
+import { NavLink } from 'react-router-dom';
 function DesCard(props){
+  console.log(props.key)
     return(
         <article className="destination-card" data-category={props.data}>
               <div className="card-image">
@@ -21,9 +22,9 @@ function DesCard(props){
                  {props.description}
                 </p>
                 <div className="card-footer">
-                  <a href="#" className="explore-btn" aria-label={props.aria}>
+                  <NavLink to={`/destination/${props.id}`} className="explore-btn" aria-label={props.aria}>
                     Explore Region <i className="ri-arrow-right-line"></i>
-                  </a>
+                  </NavLink>
                 </div>
               </div>
             </article>

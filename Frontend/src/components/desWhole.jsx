@@ -2,7 +2,7 @@ import DesFront from './desFront'
 import DesCard from './desCard'
 import Footer from './Footer'
 import Header from './Header'
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 // northern
 import aksumImg from '../assets/northern/aksum.jpg'
 import gondarImg from '../assets/northern/gondar.jpg'
@@ -32,8 +32,51 @@ import gambellaImg from '../assets/western/gambelapark.jpg'
 import benishangulImg from '../assets/western/benishangul.jpg'
 
 import '../styles/desWhole.css'
-function DesWhole(){
-    const tempo = [
+ function DesWhole(){
+    const [places,setPlaces]=useState([])
+    const [t,setT]=useState([])
+useEffect(()=>{
+  const fetchData=async()=>{
+    try{
+      const response = await fetch("http://localhost:5000/api/destinations", {
+      method: "GET",
+      credentials: "include",
+    });
+    const json = await response.json();
+    console.log("Fetched destinations:", json);
+    const m=json.destinations.map((item) => ({
+      image: item.image, // URL or base64 from DB
+      highlight: item.highlight,
+      price: `From ${item.price} ETB`,
+      category: item.category.split(" ")
+    .map(word => word[0].toUpperCase() + word.slice(1))
+    .join(" "),
+      location: item.location,
+      title: item.title,
+      description: item.description,
+      aria: item.aria,
+      data: item.data,
+      duration: item.duration,
+      id: item._id, 
+    }))
+    console.log("Mapped destinations:", m);
+    setT(m);
+    setPlaces(m);
+    }catch(err){
+      console.error("Error fetching destinations:", err);
+    }
+  };
+  fetchData();
+},[])
+useEffect(() => {
+  console.log("Updated t state:", t);
+}, [t]);
+
+useEffect(() => {
+  console.log("Updated places state:", places);
+}, [places]);
+
+   const tempo = [
    {
      image: laliImg,
      highlight: "Lalibela Rock Churches - ancient rock-hewn churches in Ethiopia",
@@ -251,19 +294,18 @@ function DesWhole(){
      data: "natural",
    },
  ]
-    const [places,setPlaces]=useState(tempo)
-
     return(
         <>
         <Header/>
     <main className="main-content">
       <div className="container">
-        <DesFront places={places} tempo={tempo} setPlaces={setPlaces}/>
+        <DesFront places={places} tempo={t} setPlaces={setPlaces}/>
         <section className="destinations-grid">
             <div className="grid-container">
               {places.map((a, index) => (
                 <DesCard
-                  key={index}               // ✅ KEY ADDED HERE
+                  key={a.id}  
+                  id={a.id}         
                   image={a.image}
                   highlight={a.highlight}
                   price={a.price}

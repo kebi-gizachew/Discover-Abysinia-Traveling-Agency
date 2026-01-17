@@ -1,26 +1,85 @@
 import { useParams } from "react-router-dom";
-import{useState,useEffect} from 'react';
-import {DestId} from '../components/destId';
-import Booking from "../../../Backend/models/Booking";
-const DestinationId = () => {
-  const { id } = useParams(); // this comes from the URL
-const [destination,setDestination]=useState(null);
-useEffect(()=>{
-    // Fetch destination details based on the id
-    fetch(`http://localhost:5000/destinations/${id}`)
-    .then((response)=>response.json())
-    .then((data)=>setDestination(data))
-    .catch((error)=>console.error("Error fetching destination:",error));
-},[id]);
+import { useEffect, useState } from "react";
+import "../styles/destinationId.css";
+import BookingForm from "../components/BookingId";
+import { NavLink } from "react-router-dom";
+function DestinationId() {
+  const { id } = useParams();
+  const [destination, setDestination] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-if(!destination){
-    return <div>Loading...</div>;
+  useEffect(() => {
+    const fetchDestination = async () => {
+      try {
+        const res = await fetch(
+          `http://localhost:5000/api/destinations/destinations/${id}`,
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch destination");
+        }
+
+        const json = await res.json();
+        console.log(json);
+        setDestination(json); // 👈 backend returns array
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDestination();
+  }, [id]);
+
+  if (loading) return <p className="loading">Loading destination...</p>;
+  if (error) return <p className="error">{error}</p>;
+
+  return (
+    <section className="destination-profile">
+      <div className="explore-more">
+      <h1 className="dest-title">Explore More</h1>
+      <p className="Back">Go Back to <NavLink to="/destination">Destinations</NavLink></p>
+      </div>
+      <div className="profile-card">
+        <img
+          src={destination.image}
+          alt={destination.highlight}
+          className="profile-image"
+        />
+
+        <div className="profile-content">
+          <h1 className="profile-title">{destination.title}</h1>
+          <p className="profile-location">
+            📍 {destination.location}
+          </p>
+
+          <p className="profile-description">
+            {destination.description}
+          </p>
+
+          <div className="profile-meta">
+            <span className="meta-item">
+              Category: {destination.category}
+            </span>
+            <span className="meta-item">
+              Duration: {destination.duration}
+            </span>
+            <span className="meta-item price">
+              {destination.price} ETB
+            </span>
+          </div>
+        </div>
+      </div>
+      <BookingForm destination={destination.title} destinationId={id}/>
+ 
+    </section>
+  );
 }
-  return 
-  <>
-  <DestId destination={destination} />;
-  <Booking destinationId={id} />
-  </>
-};
 
 export default DestinationId;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import imageCompression from "browser-image-compression";
 import "../styles/Admin.css";
-
+import AdminMessages from '../components/messages'
 const Admin = () => {
   const [image, setImage] = useState(""); // base64 string
   const [highlight, setHighlight] = useState("");
@@ -91,6 +91,7 @@ const Admin = () => {
 
 
   return (
+    <>
     <div className="admin-container">
       <h2>Add New Destination</h2>
       <form className="destination-form" onSubmit={handleSubmit}>
@@ -143,6 +144,8 @@ const Admin = () => {
         <button type="submit" className="submit-btn">Add Destination</button>
       </form>
     </div>
+      <AdminMessages/>
+      </>
   );
 };
 
