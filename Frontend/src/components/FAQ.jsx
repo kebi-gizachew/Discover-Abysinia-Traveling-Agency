@@ -1,10 +1,10 @@
-// src/components/FAQ.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import SectionHeader from './sectionHeader';
 import AccordionItem from './AccordionItem';
 import '../styles/FAQ.css';
 
 const FAQ = () => {
+  const [openId, setOpenId] = useState(null); 
   const faqItems = [
     {
       id: "faq-1",
@@ -37,22 +37,27 @@ const FAQ = () => {
       answer: "We accept major credit cards, mobile money (CBE Birr, M-Pesa), and bank transfers in ETB or USD. Flexible payment plans available for larger bookings."
     }
   ];
+  const toggleItem = (id) => {
+    setOpenId(openId === id ? null : id);
+  };
 
   return (
-    <section className="faq-section">
+    <section className="faq-section" id="faq">
       <div className="container">
         <SectionHeader 
           title="Frequently Asked Questions"
           description="Everything you need to know about traveling in Ethiopia"
         />
         
-        <div className="accordion">
+        <div className="accordion" role="region" aria-label="FAQ Accordion">
           {faqItems.map((item) => (
             <AccordionItem 
               key={item.id}
               id={item.id}
               question={item.question}
               answer={item.answer}
+              isOpen={openId === item.id}
+              onToggle={() => toggleItem(item.id)}
             />
           ))}
         </div>
