@@ -92,51 +92,51 @@ const Admin = () => {
 
   return (
     <>
-    <div className="admin-container">
+    <div className="a-container">
       <h2>Add New Destination</h2>
-      <form className="destination-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-        <div className="form-group">
+      <form className="destination-f" onSubmit={handleSubmit}>
+        <div className="f-group">
+        <div className="f-group">
           <label>Title</label>
           <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter title" />
         </div>
-        <div className="form-group">
+        <div className="f-group">
           <label>Category</label>
           <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} placeholder="Enter category" />
         </div>
           <label>Image</label>
           <input type="file" accept="image/*" onChange={handleFileChange} />
         </div>
-        <div className="form-group">
+        <div className="f-group">
           <label>Location</label>
           <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} placeholder="Enter location" />
         </div>
 
-        <div className="form-group">
+        <div className="f-group">
           <label>Highlight</label>
           <input type="text" value={highlight} onChange={(e) => setHighlight(e.target.value)} placeholder="Enter highlight" />
         </div>
 
-        <div className="form-group">
+        <div className="f-group">
           <label>Price</label>
           <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Enter price" />
         </div>
-        <div className="form-group">
+        <div className="f-group">
           <label>Description</label>
           <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Enter description" />
         </div>
 
-        <div className="form-group">
+        <div className="f-group">
           <label>Aria</label>
           <input type="text" value={aria} onChange={(e) => setAria(e.target.value)} placeholder="Enter aria" />
         </div>
 
-        <div className="form-group">
+        <div className="f-group">
           <label>Data</label>
           <input type="text" value={data} onChange={(e) => setData(e.target.value)} placeholder="Enter data" />
         </div>
 
-        <div className="form-group">
+        <div className="f-group">
           <label>Duration</label>
           <input type="text" value={duration} onChange={(e) => setDuration(e.target.value)} placeholder="Enter duration" />
         </div>

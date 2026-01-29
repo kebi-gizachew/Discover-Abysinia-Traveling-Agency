@@ -1,7 +1,6 @@
 import { useState } from "react";
 import '../styles/loginSignup.css';
 import 'remixicon/fonts/remixicon.css';
-import { authService } from '../../services/authService';
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -44,10 +43,10 @@ const Signup = () => {
         alert("Account created successfully! You are now logged in.");
         window.location.href = "/";
       } else {
-        setError(result.message || "Signup failed");
+        setError("Cannot sign you up" || "Signup failed");
       }
     } catch (err) {
-      setError(err.message || "Signup failed. Please try again.");
+      setError("Signup failed. Please try again.");
       console.error("Signup error:", err);
     } finally {
       setLoading(false); 

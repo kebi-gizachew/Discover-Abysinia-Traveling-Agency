@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import '../styles/loginSignup.css';
 import 'remixicon/fonts/remixicon.css';
-import { authService } from '../../services/authService'; 
 
 const Login = () => {
   const [email, setEmail] = useState("");

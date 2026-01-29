@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import '../styles/loginSignup.css';
 import 'remixicon/fonts/remixicon.css';
-import { authService } from '../../services/authService'; 
 import "../styles/Adminlogin.css";
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -42,15 +41,15 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-container ">
-      <div className="auth-card">
+    <div className="a-container ">
+      <div className="a-card">
         <p className="returnToHome">
           <a href="/">
             <i className="ri-arrow-left-line"></i>Back to Home
           </a>
         </p>
         <h2>Welcome Back</h2>
-        <p className="auth-subtitle">Sign in to access Admin</p>
+        <p className="a-subtitle">Sign in to access Admin</p>
         
         {error && (
           <div style={{
@@ -68,7 +67,7 @@ const Login = () => {
         )}
         
         <form onSubmit={handleSubmit}>
-          <div className="input-group">
+          <div className="i-group">
             <label>Email</label>
             <input
               type="email"
@@ -79,7 +78,7 @@ const Login = () => {
               disabled={loading}
             />
           </div>
-          <div className="input-group">
+          <div className="i-group">
             <label>Password</label>
             <input
               type="password"
@@ -92,7 +91,7 @@ const Login = () => {
           </div>
           <button 
             type="submit" 
-            className="auth-btn"
+            className="a-btn"
             disabled={loading}
             style={loading ? {opacity: 0.7, cursor: 'not-allowed'} : {}}
           >
