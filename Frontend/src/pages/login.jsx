@@ -125,11 +125,6 @@ const Login = () => {
           Don't have an account? <a href="/signup">Sign Up</a>
         </p>
         
-        <div style={{marginTop: '20px', fontSize: '12px', color: '#666'}}>
-          <p>Test with:</p>
-          <p>• Email: test@fix.com</p>
-          <p>• Password: 12345678</p>
-        </div>
       </div>
     </div>
   );
