@@ -1,21 +1,35 @@
-import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
+import jwt from "jsonwebtoken";
 import Admin from "../models/Admin.js";
+import { parseCookies } from "../utils/parseCookies.js";
+import { sendJSON } from "../utils/sendJSON.js";
 
-dotenv.config();
-export const authAdmin = async (req, res, next) => {
-    const token = req.cookies.admin;
+
+export const authAdmin = async (req, res) => {
+  try {
+    const cookies = parseCookies(req);
+    const token = cookies.admin;
+
     if (!token) {
-        return res.status(401).json({ message: "Unauthorized access" });
+      sendJSON(res, 401, { message: "Unauthorized access" });
+      return null;
     }
-    try {
-        const decoded = jwt.verify(token, process.env.JWT_Admin);
-        if (!decoded) {
-            return res.status(401).json({ message: "Unauthorized access" });
-        }
-        req.admin = await Admin.findById(decoded.id).select("-password");
-        next();
-    } catch (error) {
-        res.status(401).json({ message: "Invalid token" });
+
+    const decoded = jwt.verify(token, process.env.JWT_Admin);
+    if (!decoded) {
+      sendJSON(res, 401, { message: "Invalid token" });
+      return null;
     }
+
+    const admin = await Admin.findById(decoded.id).select("-password");
+    if (!admin) {
+      sendJSON(res, 401, { message: "Admin not found" });
+      return null;
+    }
+
+    return admin; 
+
+  } catch (error) {
+    sendJSON(res, 401, { message: "Invalid token" });
+    return null;
+  }
 };

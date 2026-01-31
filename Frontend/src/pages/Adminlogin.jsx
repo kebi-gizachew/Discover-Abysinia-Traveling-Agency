@@ -9,36 +9,38 @@ const Login = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false); 
   const navigate = useNavigate(); 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); 
-    setLoading(true); 
-
+    setError("");
+    setLoading(true);
+  
     try {
-      const result = await fetch("http://localhost:5000/api/admins/login", {
+      const result = await fetch("http://localhost:5000/api/admin/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        credentials: 'include',
+        credentials: "include", 
         body: JSON.stringify({ email, password })
       });
-      
-      if (result.status === 200) {
-        console.log("Login successful");
+  
+      const data = await result.json();
+  
+      if (result.ok) { 
+        console.log("Login successful", data);
         alert("Login successful!");
         navigate("/admin");
       } else {
-        setError(result.message || "Login failed");
+        setError(data.message || "Login failed"); 
       }
     } catch (err) {
       setError(err.message || "Login failed. Please check your credentials.");
       console.error("Login error:", err);
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
+  
 
   return (
     <div className="a-container ">
