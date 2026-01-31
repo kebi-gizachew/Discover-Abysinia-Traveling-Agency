@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import '../styles/loginSignup.css';
 import 'remixicon/fonts/remixicon.css';
-import { authService } from '../../services/authService'; 
 import "../styles/Adminlogin.css";
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -10,47 +9,49 @@ const Login = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false); 
   const navigate = useNavigate(); 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); 
-    setLoading(true); 
-
+    setError("");
+    setLoading(true);
+  
     try {
-      const result = await fetch("http://localhost:5000/api/admins/login", {
+      const result = await fetch("http://localhost:5000/api/admin/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        credentials: 'include',
+        credentials: "include", 
         body: JSON.stringify({ email, password })
       });
-      
-      if (result.status === 200) {
-        console.log("Login successful");
+  
+      const data = await result.json();
+  
+      if (result.ok) { 
+        console.log("Login successful", data);
         alert("Login successful!");
         navigate("/admin");
       } else {
-        setError(result.message || "Login failed");
+        setError(data.message || "Login failed"); 
       }
     } catch (err) {
       setError(err.message || "Login failed. Please check your credentials.");
       console.error("Login error:", err);
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
+  
 
   return (
-    <div className="auth-container ">
-      <div className="auth-card">
+    <div className="a-container ">
+      <div className="a-card">
         <p className="returnToHome">
           <a href="/">
             <i className="ri-arrow-left-line"></i>Back to Home
           </a>
         </p>
         <h2>Welcome Back</h2>
-        <p className="auth-subtitle">Sign in to access Admin</p>
+        <p className="a-subtitle">Sign in to access Admin</p>
         
         {error && (
           <div style={{
@@ -68,7 +69,7 @@ const Login = () => {
         )}
         
         <form onSubmit={handleSubmit}>
-          <div className="input-group">
+          <div className="i-group">
             <label>Email</label>
             <input
               type="email"
@@ -79,7 +80,7 @@ const Login = () => {
               disabled={loading}
             />
           </div>
-          <div className="input-group">
+          <div className="i-group">
             <label>Password</label>
             <input
               type="password"
@@ -92,7 +93,7 @@ const Login = () => {
           </div>
           <button 
             type="submit" 
-            className="auth-btn"
+            className="a-btn"
             disabled={loading}
             style={loading ? {opacity: 0.7, cursor: 'not-allowed'} : {}}
           >

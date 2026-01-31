@@ -1,7 +1,6 @@
 import { useState } from "react";
 import '../styles/loginSignup.css';
 import 'remixicon/fonts/remixicon.css';
-import { authService } from '../../services/authService';
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -44,10 +43,10 @@ const Signup = () => {
         alert("Account created successfully! You are now logged in.");
         window.location.href = "/";
       } else {
-        setError(result.message || "Signup failed");
+        setError("Cannot sign you up" || "Signup failed");
       }
     } catch (err) {
-      setError(err.message || "Signup failed. Please try again.");
+      setError("Signup failed. Please try again.");
       console.error("Signup error:", err);
     } finally {
       setLoading(false); 
@@ -184,11 +183,6 @@ const Signup = () => {
         <p className="auth-switch">
           Already have an account? <a href="/login">Sign in</a>
         </p>
-        
-        <div style={{marginTop: '20px', fontSize: '12px', color: '#666'}}>
-          <p>Note: Use at least 8 characters for password</p>
-          <p>Test with: testuser@example.com / 12345678</p>
-        </div>
       </div>
     </div>
   );

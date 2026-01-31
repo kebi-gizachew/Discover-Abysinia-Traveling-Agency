@@ -20,11 +20,16 @@ function DestinationId() {
           }
         );
 
-        if (!res.ok) {
-          throw new Error("Failed to fetch destination");
-        }
+            if (res.status === 401 || res.status === 403) {
+  alert("Login first!!!");
+  window.location.href = "/";
+  return;
+}
+        
 
         const json = await res.json();
+     
+
         console.log(json);
         setDestination(json); // 👈 backend returns array
       } catch (err) {
