@@ -1,64 +1,100 @@
+// controllers/userController.js
 import bcrypt from "bcrypt";
 import User from "../models/User.js";
 import generateCookie from "../utils/generateCookie.js";
+import { sendJSON } from "../utils/sendJSON.js";
 
-// Register a new user
-export const registerUser = async (req, res) => {
+export const registerUser = async (req, res, body) => {
   try {
-    const { name, email, password, phone, country } = req.body;
+    const { name, email, password, phone, country } = body || {};
+
+    if (!name || !email || !password || !phone || !country) {
+      return sendJSON(res, 400, { message: "All fields are required" });
+    }
+
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(400).json({ message: "User already exists" });
+      return sendJSON(res, 400, { message: "User already exists" });
     }
+
     const hashedPassword = await bcrypt.hash(password, 10);
+
     const newUser = await User.create({
       name,
       email,
       password: hashedPassword,
       phone,
-      country
+      country,
     });
 
     const cookie = generateCookie(newUser);
-    res.cookie(cookie.name, cookie.value, cookie.options);
-    res.status(201).json({ message: "User registered successfully", cookie });
+    res.setHeader(
+      "Set-Cookie",
+      `${cookie.name}=${cookie.value}; HttpOnly; Path=/; SameSite=Lax`
+    );
+
+    return sendJSON(res, 201, {
+      message: "User registered successfully",
+      user: {
+        id: newUser._id,
+        name: newUser.name,
+        email: newUser.email,
+      },
+    });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error("REGISTER USER ERROR:", error);
+    return sendJSON(res, 500, { message: "Failed to register user" });
   }
 };
-export const getUsers=async(req,res)=>{
+export const loginUser = async (req, res, body) => {
   try {
-    const users=await User.find({});
-    res.status(200).json({ users });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-export const loginUser = async (req, res) => {
-  try {
-    const { email, password } = req.body;
+    const { email, password } = body || {};
+
+    if (!email || !password) {
+      return sendJSON(res, 400, { message: "Email and password required" });
+    }
+
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ message: "Invalid email or password" });
-    }   
+      return sendJSON(res, 400, { message: "Invalid email or password" });
+    }
+
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      return res.status(400).json({ message: "Invalid email or password" });
+      return sendJSON(res, 400, { message: "Invalid email or password" });
     }
+
     const cookie = generateCookie(user);
-    res.cookie(cookie.name, cookie.value, cookie.options);
-    res.status(200).json({ message: "Login successful", cookie });
+    res.setHeader(
+      "Set-Cookie",
+      `${cookie.name}=${cookie.value}; HttpOnly; Path=/; SameSite=Lax`
+    );
+
+    return sendJSON(res, 200, {
+      message: "Login successful",
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+      },
+    });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error("LOGIN USER ERROR:", error);
+    return sendJSON(res, 500, { message: "Failed to login user" });
   }
 };
-
-// Logout user
 export const logoutUser = (req, res) => {
-  res.clearCookie("user", {
-    httpOnly: true,
-    secure: false,
-    sameSite: "lax"
-  });
-  res.status(200).json({ message: "Logout successful" });
+ 
+  res.setHeader("Set-Cookie", `user=; HttpOnly; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Lax`);
+  return sendJSON(res, 200, { message: "Logout successful" });
+};
+
+export const getUsers = async (req, res) => {
+  try {
+    const users = await User.find({}).select("-password");
+    return sendJSON(res, 200, { users });
+  } catch (error) {
+    console.error("GET USERS ERROR:", error);
+    return sendJSON(res, 500, { message: "Failed to fetch users" });
+  }
 };

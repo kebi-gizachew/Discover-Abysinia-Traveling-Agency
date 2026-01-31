@@ -11,6 +11,7 @@ import {
   cancelBooking,
 } from "./controllers/bookingController.js";
 
+import { registerUser, loginUser, logoutUser, getUsers } from "./controllers/userController.js";
 import { authUser } from "./middleware/authUser.js";
 import { parseRequestBody, sendJSON } from "./utils/helpers.js";
 
@@ -19,14 +20,8 @@ connectDB();
 
 const server = http.createServer(async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, DELETE, OPTIONS"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Content-Type, Authorization"
-  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.setHeader("Access-Control-Allow-Credentials", "true");
 
   if (req.method === "OPTIONS") {
@@ -35,7 +30,6 @@ const server = http.createServer(async (req, res) => {
   }
 
   try {
-
     if (req.method === "POST" && req.url === "/api/admin/register") {
       const body = await parseRequestBody(req);
       return registerAdmin(req, res, body);
@@ -52,12 +46,33 @@ const server = http.createServer(async (req, res) => {
       return sendJSON(res, 200, { admin });
     }
 
+    if (req.method === "POST" && req.url === "/api/users/register") {
+      const body = await parseRequestBody(req); 
+      return registerUser(req, res, body);
+    }
+
+    if (req.method === "POST" && req.url === "/api/users/login") {
+      const body = await parseRequestBody(req); 
+      return loginUser(req, res, body);
+    }
+
+    if (req.method === "POST" && req.url === "/api/users/logout") {
+        return logoutUser(req, res);
+      }
+      
+
+    if (req.method === "GET" && req.url === "/api/users") {
+      const admin = await authAdmin(req, res); 
+      if (!admin) return;
+      return getUsers(req, res);
+    }
     if (req.url.startsWith("/api/bookings")) {
       const currentUser = await authUser(req, res);
       if (!currentUser) return;
 
       if (req.method === "POST" && req.url === "/api/bookings") {
-        return createBooking(req, res, currentUser);
+        const body = await parseRequestBody(req);
+        return createBooking(req, res, currentUser, body);
       }
 
       if (req.method === "GET" && req.url === "/api/bookings") {
@@ -79,5 +94,5 @@ const server = http.createServer(async (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () =>
-  console.log(`🚀 Server running on http://localhost:${PORT}`)
+  console.log(`Server running on http://localhost:${PORT}`)
 );

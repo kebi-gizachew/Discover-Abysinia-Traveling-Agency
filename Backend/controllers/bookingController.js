@@ -1,25 +1,59 @@
 // controllers/bookingController.js
+
 import Booking from "../models/Booking.js";
 import User from "../models/User.js";
 import Destination from "../models/Destination.js";
 import mongoose from "mongoose";
-import { parseRequestBody, sendJSON } from "../utils/helpers.js"; // ✅ import helpers
+import { sendJSON } from "../utils/helpers.js";
 
-// Create booking
-export const createBooking = async (req, res, currentUser) => {
+/* ================= CREATE BOOKING ================= */
+export const createBooking = async (req, res, currentUser, body) => {
   try {
-    const userId = currentUser._id;
-    const { fullName, email, transport, destinationId, travelDate, travelers } = await parseRequestBody(req);
-
-    const user = await User.findById(userId);
-    const destination = await Destination.findById(destinationId);
-
-    if (!user || !destination) {
-      return sendJSON(res, 404, { message: "User or destination not found" });
+    if (!currentUser) {
+      return sendJSON(res, 401, { message: "Unauthorized" });
     }
 
-    const newBooking = await Booking.create({
-      user: userId,
+    const {
+      fullName,
+      email,
+      transport,
+      destinationId,
+      travelDate,
+      travelers,
+    } = body || {};
+
+    /* ---- validation ---- */
+    if (
+      !fullName ||
+      !email ||
+      !transport ||
+      !destinationId ||
+      !travelDate ||
+      !travelers
+    ) {
+      return sendJSON(res, 400, {
+        message: "All booking fields are required",
+      });
+    }
+
+    if (!mongoose.Types.ObjectId.isValid(destinationId)) {
+      return sendJSON(res, 400, { message: "Invalid destination ID" });
+    }
+
+    /* ---- verify user & destination ---- */
+    const user = await User.findById(currentUser._id);
+    if (!user) {
+      return sendJSON(res, 404, { message: "User not found" });
+    }
+
+    const destination = await Destination.findById(destinationId);
+    if (!destination) {
+      return sendJSON(res, 404, { message: "Destination not found" });
+    }
+
+    /* ---- create booking ---- */
+    const booking = await Booking.create({
+      user: currentUser._id,
       fullName,
       email,
       transport,
@@ -28,41 +62,73 @@ export const createBooking = async (req, res, currentUser) => {
       travelers,
     });
 
-    sendJSON(res, 201, { message: "Booking created successfully", booking: newBooking });
+    return sendJSON(res, 201, {
+      message: "Booking created successfully",
+      booking,
+    });
+
   } catch (error) {
-    sendJSON(res, 500, { message: error.message });
+    console.error("CREATE BOOKING ERROR:", error);
+    return sendJSON(res, 500, {
+      message: "Failed to create booking",
+    });
   }
 };
 
-// Get user bookings
+/* ================= GET USER BOOKINGS ================= */
 export const getUserBookings = async (req, res, currentUser) => {
   try {
-    const userId = currentUser._id;
-    const bookings = await Booking.find({ user: userId }).populate("destination");
-    sendJSON(res, 200, { bookings });
+    if (!currentUser) {
+      return sendJSON(res, 401, { message: "Unauthorized" });
+    }
+
+    const bookings = await Booking.find({
+      user: currentUser._id,
+    }).populate("destination");
+
+    return sendJSON(res, 200, { bookings });
+
   } catch (error) {
-    sendJSON(res, 500, { message: error.message });
+    console.error("GET BOOKINGS ERROR:", error);
+    return sendJSON(res, 500, {
+      message: "Failed to fetch bookings",
+    });
   }
 };
 
-// Cancel booking
+/* ================= CANCEL BOOKING ================= */
 export const cancelBooking = async (req, res, currentUser) => {
   try {
-    const parts = req.url.split("/");
-    const bookingId = parts[parts.length - 1];
+    if (!currentUser) {
+      return sendJSON(res, 401, { message: "Unauthorized" });
+    }
+
+    const bookingId = req.url.split("/").pop();
 
     if (!mongoose.Types.ObjectId.isValid(bookingId)) {
       return sendJSON(res, 400, { message: "Invalid booking ID" });
     }
 
-    const booking = await Booking.findOneAndDelete({ _id: bookingId, user: currentUser._id });
+    const booking = await Booking.findOneAndDelete({
+      _id: bookingId,
+      user: currentUser._id,
+    });
 
     if (!booking) {
-      return sendJSON(res, 404, { message: "Booking not found" });
+      return sendJSON(res, 404, {
+        message: "Booking not found",
+      });
     }
 
-    sendJSON(res, 200, { message: "Booking canceled successfully", booking });
+    return sendJSON(res, 200, {
+      message: "Booking canceled successfully",
+      booking,
+    });
+
   } catch (error) {
-    sendJSON(res, 500, { message: error.message });
+    console.error("CANCEL BOOKING ERROR:", error);
+    return sendJSON(res, 500, {
+      message: "Failed to cancel booking",
+    });
   }
 };
