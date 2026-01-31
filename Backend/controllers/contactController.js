@@ -28,9 +28,8 @@ export const ContactForm = async (req, res) => {
 };
 
 // ---------------- GET ALL CONTACT MESSAGES (ADMIN) ----------------
-export const getAllContactMessages = async (req, res, currentAdmin) => {
+export const getAllContactMessages = async (req, res) => {
   try {
-    if (!currentAdmin) return; // Auth guard
 
     const contactMessages = await Contact.find();
     sendJSON(res, 200, { contactMessages });
@@ -42,7 +41,7 @@ export const getAllContactMessages = async (req, res, currentAdmin) => {
 // ---------------- DELETE CONTACT MESSAGE (ADMIN) ----------------
 export const deleteContactMessage = async (req, res, currentAdmin) => {
   try {
-    if (!currentAdmin) return; // Auth guard
+    
 
     const parts = req.url.split("/");
     const id = parts[parts.length - 1];
