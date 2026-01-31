@@ -9,6 +9,7 @@ function ContactForm() {
   const [destination, setDestination] = useState("");
   const [dates, setDates] = useState("");
   const [messages, setMessages] = useState("");
+  const [lastSubmitted, setLastSubmitted] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,16 +25,17 @@ function ContactForm() {
     };
 
     try {
-      const res = await fetch(
-        "http://localhost:5000/api/contacts/contact",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const res = await fetch("http://localhost:5000/api/contacts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+      if (!res.ok) {
+        alert(result.message || "Failed to send message");
+        return;
+      }
 
       // reset form
       setName("");
@@ -43,6 +45,9 @@ function ContactForm() {
       setDestination("");
       setDates("");
       setMessages("");
+
+      // keep last submitted message for local display
+      setLastSubmitted(result.contactMessage || null);
 
       alert("Message sent successfully!");
     } catch (error) {
@@ -198,6 +203,7 @@ function ContactForm() {
           third parties.
         </p>
       </form>
+        
     </div>
   );
 }
