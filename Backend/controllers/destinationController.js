@@ -53,19 +53,18 @@ export const createDestination = async (req, res, currentAdmin) => {
 };
 
 // ---------------- GET DESTINATION BY ID (USER) ----------------
-export const getDestinationById = async (req, res, currentUser) => {
+export const getDestinationById = async (req, res) => {
   try {
-    if (!currentUser) return; // Auth guard
+    console.log("hi") // Auth guard
+    console.log("hello")
 
     const parts = req.url.split("/");
     const id = parts[parts.length - 1];
 
     const destination = await Destination.findById(id);
-
     if (!destination) {
       return sendJSON(res, 404, { message: "Destination not found" });
     }
-
     sendJSON(res, 200, { destination });
   } catch (error) {
     sendJSON(res, 500, { message: error.message });
