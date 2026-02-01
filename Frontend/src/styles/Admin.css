@@ -1,44 +1,48 @@
+*{
+  margin:0px;
+  padding:0px;
+  box-sizing:border-box;
+}
 .a-container {
   max-width: 600px;
-  width: 100%;
   margin: 40px auto;
-  padding: 30px;
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
+  padding: 10px 16px 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
 }
 
 .a-container h2 {
-  text-align: center;
-  margin: 0 0 25px;
+  padding:auto;
+  width:40%;
+  margin:20px auto;
   color: #764802;
-  display: block;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  z-index: 2;
 }
-.destination-f {
-  width: 90%;
-}
+
 .destination-f .f-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
-  gap: 6px;
+  width:500px;
 }
 
 .destination-f label {
+  margin-bottom: 5px;
   font-weight: bold;
   color: #333;
 }
 
 .destination-f input {
-  padding: 11px 14px;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 14px;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .destination-f input:focus {
