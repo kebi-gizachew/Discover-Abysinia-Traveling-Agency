@@ -1,14 +1,12 @@
-import jwt from "jsonwebtoken";
-
-const generateAdmin = (user) => {
-  const token = jwt.sign(
-    { id: user._id },
+import jwt from "jsonwebtoken"
+const generateAdmin=(user)=>{
+  const token=jwt.sign(
+    {id:user._id },
     process.env.JWT_Admin,
-    { expiresIn: "7d" }
+    {expiresIn:"7d"}
   );
-  return  {name:"admin",
-        value:token,
-        options:{
+  return  {name:"admin",value:token,
+options:{
         httpOnly:true,
         secure:false,
         sameSite:"lax",
@@ -16,5 +14,5 @@ const generateAdmin = (user) => {
         maxAge:1000*60*60*24*7,
         }
     }
-};
-export default generateAdmin;
+}
+export default generateAdmin

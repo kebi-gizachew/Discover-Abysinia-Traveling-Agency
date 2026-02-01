@@ -6,7 +6,6 @@ function Booking(){
           <div class="booking-card">
             <h2 class="booking-title">Plan Your Ethiopian Adventure</h2>
             <p class="booking-subtitle">Book your journey with ease and confidence</p>
-            
             <form class="booking-form">
               <div class="form-grid">
                 <div class="form-group">

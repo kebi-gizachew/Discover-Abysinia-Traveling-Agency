@@ -1,17 +1,15 @@
 import { useState } from "react";
 import "../styles/BookingId.css";
 function BookingForm(props) {
-    const [fullName, setFullName] = useState("");
-    const [email, setEmail] = useState("");
-  const [destinationId, setdestinationId] = useState(props.destinationId || "");
-  const [travelDate, setTravelDate] = useState("");
-  const [travelers, setTravelers] = useState(1);
-  const [transport, setTransport] = useState("Bus");
-
-  const handleSubmit = async (e) => {
-  e.preventDefault();
-
-  const bookingData = {
+    const [fullName, setFullName] = useState("")
+    const [email, setEmail] = useState("")
+  const [destinationId, setdestinationId] = useState(props.destinationId || "")
+  const [travelDate, setTravelDate] = useState("")
+  const [travelers, setTravelers] = useState(1)
+  const [transport, setTransport] = useState("Bus")
+  const handleSubmit=async (e) => {
+  e.preventDefault()
+  const bookingData={
     fullName,
     email,
     transport,

@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const connectDB=async()=>{
     try{
-        console.log("Going to be connected");
+    console.log("Going to be connected");
     const connect=mongoose.connect(process.env.MONGO_URI);
     console.log("MongoDB connected");
 }catch(err){

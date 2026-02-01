@@ -1,22 +1,19 @@
 // controllers/userController.js
-import bcrypt from "bcrypt";
-import User from "../models/User.js";
-import generateCookie from "../utils/generateCookie.js";
-import { sendJSON } from "../utils/sendJSON.js";
+import bcrypt from "bcrypt"
+import User from "../models/User.js"
+import generateCookie from "../utils/generateCookie.js"
+import {sendJSON} from "../utils/sendJSON.js"
 
 export const registerUser = async (req, res, body) => {
   try {
-    const { name, email, password, phone, country } = body || {};
-
-    if (!name || !email || !password || !phone || !country) {
-      return sendJSON(res, 400, { message: "All fields are required" });
+    const {name,email,password,phone,country}=body||{};
+    if (!name||!email||!password||!phone||!country) {
+      return sendJSON(res,400,{message:"All fields are required" });
     }
-
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
+    const existingUser = await User.findOne({email });
+    if (existingUser){
       return sendJSON(res, 400, { message: "User already exists" });
     }
-
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = await User.create({
