@@ -23,7 +23,7 @@ function ContactForm() {
       destination,
       message:messages,
     };
-
+    console.log(data)
     try {
       const res = await fetch("http://localhost:5000/api/contacts", {
         method: "POST",
@@ -32,10 +32,7 @@ function ContactForm() {
       });
 
       const result = await res.json();
-      if (!res.ok) {
-        alert(result.message || "Failed to send message");
-        return;
-      }
+      console.log("result"+result)
 
       // reset form
       setName("");
