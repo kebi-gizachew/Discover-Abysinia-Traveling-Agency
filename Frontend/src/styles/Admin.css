@@ -1,36 +1,44 @@
 .a-container {
   max-width: 600px;
+  width: 100%;
   margin: 40px auto;
   padding: 30px;
   background-color: #f9f9f9;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 .a-container h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin: 0 0 25px;
   color: #764802;
+  display: block;
 }
-
+.destination-f {
+  width: 90%;
+}
 .destination-f .f-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
+  gap: 6px;
 }
 
 .destination-f label {
-  margin-bottom: 5px;
   font-weight: bold;
   color: #333;
 }
 
 .destination-f input {
-  padding: 10px;
+  padding: 11px 14px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .destination-f input:focus {
