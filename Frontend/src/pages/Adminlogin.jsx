@@ -25,7 +25,7 @@ const Login = () => {
       });
   
       const data = await result.json();
-  
+      
       if (result.ok) { 
         console.log("Login successful", data);
         alert("Login successful!");
@@ -43,8 +43,8 @@ const Login = () => {
   
 
   return (
-    <div className="a-container ">
-      <div className="a-card">
+    <div className="a-containers ">
+      <div className="a-cards">
         <p className="returnToHome">
           <a href="/">
             <i className="ri-arrow-left-line"></i>Back to Home

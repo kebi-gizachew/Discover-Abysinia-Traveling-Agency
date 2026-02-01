@@ -71,6 +71,7 @@ export const loginAdmin = async (req, res, body) => {
     }
 
     const adminCookie = generateAdmin(admin);
+    console.log(adminCookie)
     setCookie(
       res,
       adminCookie.name,

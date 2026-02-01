@@ -27,9 +27,10 @@ dotenv.config();
 connectDB();
 
 const server = http.createServer(async (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5175");
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  // Allow Cookie header in CORS requests and allow credentials
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Cookie");
   res.setHeader("Access-Control-Allow-Credentials", "true");
 
   if (req.method === "OPTIONS") {

@@ -28,6 +28,7 @@
 .destination-f .f-group {
   display: flex;
   flex-direction: column;
+  margin:0 auto;
   margin-bottom: 15px;
   width:500px;
 }
